@@ -8,21 +8,21 @@ namespace DataAccessLayer.Database.Enums
 {
     internal enum DatabaseViews
     {
-        ActiveSessions, AllAddresses, AllMagazineIssueDownloads, AllMagazines, AllSubscriptions, AllUsers
+        ActiveSessions, AllAddresses, AllMagazineIssueDownloads, AllMagazines, AllSubscriptions, AllUsers, AllNewsArticles
     }
 
     internal enum DatabaseInsertableTables
     {
-        Address, Magazine, MagazineIssue, MagazineIssueDownload, Session, Subscription, User
+        Address, Magazine, MagazineIssue, MagazineIssueDownload, Session, Subscription, User, NewsArticle
     }
 
     internal enum DatabaseUpdateableTables
     {
-        Address, Magazine, MagazineIssue, Subscription, User
+        Address, Magazine, MagazineIssue, Subscription, User, NewsArticle
     }
 
     internal enum DatabaseDeleteableTables
     {
-        Address, Magazine, MagazineIssue, Session, Subscription, User
+        Address, Magazine, MagazineIssue, Session, Subscription, User, NewsArticle
     }
 }

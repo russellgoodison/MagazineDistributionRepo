@@ -7,12 +7,12 @@ using System.Text;
 using System.Threading.Tasks;
 using DataAccessLayer.Database.Enums;
 
-namespace DataAccessLayer.Database.Controllers.Base
+namespace DataAccessLayer.Database.Services.Base
 {
     /// <summary>
     /// This class is used to directly communicate with the SQL Server. It is the only class with a direct connection.
     /// </summary>
-    public class BaseController
+    public class BaseService
     {
         #region Fields
 
@@ -45,7 +45,7 @@ namespace DataAccessLayer.Database.Controllers.Base
         /// Instantiates the BaseDatabase connection
         /// </summary>
         /// <param name="ConnectionStringParam">Connection String Name to use</param>
-        public BaseController(string ConnectionStringParam = "MagazineDistribution")
+        public BaseService(string ConnectionStringParam = "MagazineDistribution")
         {
             // set the connection string
             connectionString = System.Configuration.ConfigurationManager.ConnectionStrings[ConnectionStringParam].ConnectionString;
@@ -177,6 +177,8 @@ namespace DataAccessLayer.Database.Controllers.Base
                     return temp + "AllSubscriptions";
                 case DatabaseViews.AllUsers:
                     return temp + "AllUsers";
+                case DatabaseViews.AllNewsArticles:
+                    return temp + "AllNewsArticles";
                 default:
                     return null;
             }

@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DataAccessLayer.Database.Controllers.Base;
+using DataAccessLayer.Database.Services.Base;
 using DataAccessLayer.Database.Enums;
 using DataAccessLayer.Database.Models;
 using System.Data;
 
-namespace DataAccessLayer.Database.Controllers
+namespace DataAccessLayer.Database.Services
 {
-    public class MagazineService : BaseController, IDisposable
+    public class MagazineService : BaseService, IDisposable
     {
         #region Fields
 
