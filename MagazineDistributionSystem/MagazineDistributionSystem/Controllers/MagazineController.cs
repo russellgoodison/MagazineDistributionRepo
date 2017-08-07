@@ -12,16 +12,16 @@ namespace MagazineDistributionSystem.Controllers
     public class MagazineController : ApiController
     {
         [HttpGet]
-        public List<MagazineDTO> Get()
+        public MagazineDTO Get()
         {
             try
             {
                 using (MagazineService service = new MagazineService())
                 {
-                    return service.GetAll();
+                    return service.GetAll().Where(x => x.MagazineID == "MAG001").ToArray()[0];
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw new HttpResponseException(HttpStatusCode.InternalServerError);
             }

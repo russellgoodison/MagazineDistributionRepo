@@ -42,8 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\Models\LoginUserDTO.cs" />
+    <Compile Include="Database\Models\MagazineIssueDTO.cs" />
     <Compile Include="Database\Models\NewsArticleDTO.cs" />
     <Compile Include="Database\Services\Base\BaseService.cs" />
+    <Compile Include="Database\Services\MagazineIssueService.cs" />
     <Compile Include="Database\Services\MagazineService.cs" />
     <Compile Include="Database\Services\NewsArticleService.cs" />
     <Compile Include="Database\Services\UserService.cs" />

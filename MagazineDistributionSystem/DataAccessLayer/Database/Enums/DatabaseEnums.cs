@@ -8,7 +8,7 @@ namespace DataAccessLayer.Database.Enums
 {
     internal enum DatabaseViews
     {
-        ActiveSessions, AllAddresses, AllMagazineIssueDownloads, AllMagazines, AllSubscriptions, AllUsers, AllNewsArticles
+        ActiveSessions, AllAddresses, AllMagazineIssueDownloads, AllMagazines, AllSubscriptions, AllUsers, AllNewsArticles, MagazineIssuesForAMagazine
     }
 
     internal enum DatabaseInsertableTables

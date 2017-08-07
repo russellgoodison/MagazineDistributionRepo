@@ -19,11 +19,12 @@ namespace DataAccessLayer.Database.Models
 
         }
 
-        public MagazineDTO(string MagazineIDParam, string NameParam, double SubscriptionCostParam)
+        public MagazineDTO(string MagazineIDParam, string NameParam, double SubscriptionCostParam, List<MagazineIssueDTO> MagazineIssuesParam)
         {
             this.MagazineID = MagazineIDParam;
             this.Name = NameParam;
             this.SubscriptionCost = SubscriptionCostParam;
+            this.MagazineIssues = MagazineIssuesParam;
         }
 
         #endregion
@@ -33,6 +34,7 @@ namespace DataAccessLayer.Database.Models
         public string MagazineID { get; set; }
         public string Name { get; set; }
         public double SubscriptionCost { get; set; }
+        public List<MagazineIssueDTO> MagazineIssues { get; set; }
 
         #endregion
 

@@ -97,6 +97,42 @@ namespace DataAccessLayer.Database.Services.Base
             }
         }
 
+        internal DataTable Select(DatabaseViews viewToSelect, string[] Params)
+        {
+            if (TestConnection())
+            {
+                try
+                {
+                    string strParams = "";
+                    for (int i = 0; i < Params.Length; i++)
+                    {
+                        strParams += Params[i] + ", ";
+                    }
+                    strParams = strParams.Remove(strParams.Length - 2);
+
+                    string viewName = GetViewName(viewToSelect);
+                    connection = new SqlConnection(connectionString);
+                    connection.Open();
+                    cmd = new SqlCommand("Select * from " + viewName + " ('" + strParams + "')", connection);
+                    cmd.ExecuteNonQuery();
+                    connection.Close();
+
+                    dt = new DataTable();
+                    adapter = new SqlDataAdapter(cmd);
+                    adapter.Fill(dt);
+                    return dt;
+                }
+                catch (Exception ex)
+                {
+                    throw;
+                }
+            }
+            else
+            {
+                throw new Exception("Unable to connect to the database. Please contact the System Administrator.");
+            }
+        }
+
         #endregion
 
         #region Insert
@@ -179,6 +215,8 @@ namespace DataAccessLayer.Database.Services.Base
                     return temp + "AllUsers";
                 case DatabaseViews.AllNewsArticles:
                     return temp + "AllNewsArticles";
+                case DatabaseViews.MagazineIssuesForAMagazine:
+                    return temp + "MagazineIssues";
                 default:
                     return null;
             }

@@ -46,11 +46,36 @@ namespace DataAccessLayer.Database.Services
                 DataTable dt = base.Select(View);
                 foreach (DataRow row in dt.Rows)
                 {
+                    string MagazineID = row["ID"].ToString();
+                    string[] temp = { MagazineID };
+                    DataTable dtMagazineIssues = base.Select(MagazineIssueService.ViewMagazineIssues, temp);
+
+                    List<MagazineIssueDTO> MagazineIssues = new List<MagazineIssueDTO>();
+                    foreach (DataRow magazineIssueRow in dtMagazineIssues.Rows)
+                    {
+                        bool AvailableToNonSubscribers = false;
+                        if (magazineIssueRow["AvailableToNonSubscribers"].ToString() == "1")
+                            AvailableToNonSubscribers = true;
+
+
+                        MagazineIssues.Add(new MagazineIssueDTO()
+                        {
+                            // Insert ID ??
+                            IssueNumber = int.Parse(magazineIssueRow["IssueNumber"].ToString()),
+                            DateTimeReleased = DateTime.Parse(magazineIssueRow["DateTimeReleased"].ToString()),
+                            CostToDownload = float.Parse(magazineIssueRow["CostToDownload"].ToString()),
+                            AvailableToNonSubscribers = AvailableToNonSubscribers,
+                            IssueFileName = magazineIssueRow["IssueFileName"].ToString(),
+                            IssueThumbnailName = magazineIssueRow["IssueThumbnailName"].ToString()
+                        });
+                    }
+
                     Magazines.Add(new MagazineDTO()
                     {
-                        MagazineID = row["ID"].ToString(),
+                        MagazineID = MagazineID,
                         Name = row["MagazineName"].ToString(),
-                        SubscriptionCost = double.Parse(row["SubscriptionCost"].ToString())
+                        SubscriptionCost = double.Parse(row["SubscriptionCost"].ToString()),
+                        MagazineIssues = MagazineIssues
                     });
                 }
                 return Magazines;
